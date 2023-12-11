@@ -17,10 +17,10 @@ export default function SignUp() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    
+
     try {
       setLoading(true);
-      
+
       const res = await fetch("/api/auth/signup", {
         method: "POST",
         headers: {
@@ -29,12 +29,12 @@ export default function SignUp() {
         body: JSON.stringify(formData),
       });
       const data = await res.json();
-      
+
       console.log(data);
-      
+
       if (data.success === false) {
         setLoading(false);
-        setError(data.messsage);
+        setError(data.message);
         return;
       }
       setLoading(false);

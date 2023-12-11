@@ -10,10 +10,10 @@ export const signup = async (req, res, next) => {
   try {
     await newUser.save();
     res.status(201).json("User created");
-  } catch (err) {
+  } catch (error) {
     // res.status(500).json(err.message);
     // next(errHandler(550, "error from client"));
-    next(err);
+    next(error);
   }
 };
 
@@ -30,7 +30,7 @@ export const signin = async (req, res, next) => {
       .cookie("access_token", token, { httpOnly: true })
       .status(200)
       .json(rest);
-  } catch (err) {
-    next(err);
+  } catch (error) {
+    next(error);
   }
 };
